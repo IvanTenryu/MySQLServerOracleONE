@@ -1,7 +1,7 @@
-UPDATE tb_productos SET precio = 28.51 
-WHERE producto = '695594';
+UPDATE tb_vendedores SET nombre = 'Joan Geraldo de la Fonseca Junior', porcentaje_comision = 0.10
+WHERE matricula = '00233';
 
-UPDATE tb_productos SET sabor = 'Lima/Limón', precio = 4.90
-WHERE producto = '1041119';
+UPDATE tb_vendedores SET porcentaje_comision = 0.11
+WHERE matricula = '00236';
 
-SELECT * FROM tb_productos
+SELECT * FROM tb_vendedores
