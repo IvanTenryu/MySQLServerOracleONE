@@ -18,4 +18,9 @@ SELECT * FROM tabla_de_clientes
 WHERE CIUDAD IN('ciudad de mexico', 'guadalajara') 
 AND EDAD <= 25;
 
-SELECT * FROM tabla_de_clientes WHERE NOMBRE LIKE '%ez';
+SELECT DISTINCT * FROM tabla_de_clientes WHERE NOMBRE '%ez';
+
+SELECT DISTINCT ENVASE, TAMANO FROM tabla_de_productos;
+
+
+
