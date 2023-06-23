@@ -22,5 +22,13 @@ SELECT DISTINCT * FROM tabla_de_clientes WHERE NOMBRE '%ez';
 
 SELECT DISTINCT ENVASE, TAMANO FROM tabla_de_productos;
 
+SELECT DISTINCT BARRIO FROM tabla_de_clientes WHERE CIUDAD = 'ciudad de mexico';
+
+SELECT * FROM tabla_de_productos LIMIT 10;
+
+SELECT * FROM tabla_de_productos LIMIT 5;
+
+SELECT * FROM tabla_de_productos LIMIT 5,4;
+
 
 
