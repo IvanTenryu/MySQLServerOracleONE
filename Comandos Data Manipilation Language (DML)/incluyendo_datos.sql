@@ -75,5 +75,5 @@ SELECT * FROM tb_producto;
 
 SELECT * FROM tb_cliente;
 
-
+SELECT * FROM tb_vendedor;
 
