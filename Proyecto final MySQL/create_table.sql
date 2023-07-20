@@ -59,7 +59,9 @@ FOREIGN KEY(NUMERO) REFERENCES facturas(NUMERO),
 FOREIGN KEY(CODIGO) REFERENCES productos(CODIGO)
 );
 
-
+SELECT * FROM clientes;
+SELECT * FROM productos;
+SELECT * FROM vendedores;
 
 
 
