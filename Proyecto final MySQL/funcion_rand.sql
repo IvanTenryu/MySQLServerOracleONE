@@ -79,6 +79,7 @@ END$$
 SELECT f_vendedor_aleatorio() AS PRODUCTO;
 /******************** Finaliza función producto aleatorio ********************/
 
+/******************** Inicia función venta ********************/
 SET GLOBAL log_bin_trust_function_creators = 1;
 
 SELECT 
@@ -128,9 +129,31 @@ SELECT * FROM facturas;
 
 SELECT NUMERO FROM facturas ORDER BY NUMERO DESC LIMIT 88000;
 
-CALL sp_venta('20230421', 3, 100);
+CALL sp_venta('20230421', 20, 100);
 SELECT MAX(NUMERO) FROM facturas;
+/******************** Finaliza función venta ********************/
+
+/******************** Inicia función facturación ********************/
+CALL sp_venta('20230421', 20, 100);
+
+SELECT A.FECHA, SUM(B.CANTIDAD*B.PRECIO) AS FACTURACIÓN
+FROM facturas A
+INNER JOIN items B
+ON A.NUMERO = B.NUMERO
+WHERE A.FECHA = '20230421'
+GROUP BY A.FECHA;
+
+SELECT YEAR(FECHA), CEIL(SUM(IMPUESTO * (CANTIDAD * PRECIO))) 
+AS RESULTADO
+FROM facturas F
+INNER JOIN items I ON F.NUMERO = I.NUMERO
+WHERE YEAR(FECHA) = 2023
+GROUP BY YEAR(FECHA);
+
+/******************** Finaliza función facturación ********************/
+
+/******************** Inicia mejora de triggers ********************/
 
 
 
-
+/******************** Finaliza mejora de triggers ********************/
