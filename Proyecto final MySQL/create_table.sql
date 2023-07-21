@@ -63,6 +63,12 @@ SELECT * FROM clientes;
 SELECT * FROM productos;
 SELECT * FROM vendedores;
 
+SET GLOBAL log_bin_trust_function_creators = 1;
+
+SELECT 
+	f_cliente_aleatorio() AS CLIENTE, 
+    f_producto_aleatorio() AS PRODUCTO, 
+    f_vendedor_aleatorio() AS VENDEDOR;
 
 
 
