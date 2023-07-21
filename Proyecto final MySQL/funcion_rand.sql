@@ -79,3 +79,58 @@ END$$
 SELECT f_vendedor_aleatorio() AS PRODUCTO;
 /******************** Finaliza función producto aleatorio ********************/
 
+SET GLOBAL log_bin_trust_function_creators = 1;
+
+SELECT 
+	f_cliente_aleatorio() AS CLIENTE, 
+    f_producto_aleatorio() AS PRODUCTO, 
+    f_vendedor_aleatorio() AS VENDEDOR;
+
+CALL sp_venta('20230421', 15, 100);
+
+SELECT NUMERO FROM facturas ORDER BY NUMERO ASC LIMIT 88000;
+
+DROP TABLE facturas;
+DROP TABLE items;
+
+CREATE TABLE facturas(
+NUMERO INT NOT NULL,
+FECHA DATE,
+DNI VARCHAR(11) NOT NULL,
+MATRICULA VARCHAR(5) NOT NULL,
+IMPUESTO FLOAT,
+PRIMARY KEY(NUMERO),
+FOREIGN KEY(DNI) REFERENCES clientes(DNI),
+FOREIGN KEY(MATRICULA) REFERENCES vendedores(MATRICULA)
+);
+
+CREATE TABLE items(
+NUMERO INT NOT NULL,
+CODIGO VARCHAR(10) NOT NULL,
+CANTIDAD INT,
+PRECIO FLOAT,
+PRIMARY KEY(NUMERO, CODIGO),
+FOREIGN KEY(NUMERO) REFERENCES facturas(NUMERO),
+FOREIGN KEY(CODIGO) REFERENCES productos(CODIGO)
+);
+
+INSERT INTO facturas
+SELECT NUMERO, FECHA_VENTA AS FECHA, DNI, MATRICULA, IMPUESTO
+FROM jugos_ventas.facturas;
+
+
+INSERT INTO items
+SELECT NUMERO, CODIGO_DEL_PRODUCTO AS CODIGO, CANTIDAD, PRECIO
+FROM jugos_ventas.items_facturas;
+
+SELECT * FROM items;
+SELECT * FROM facturas;
+
+SELECT NUMERO FROM facturas ORDER BY NUMERO DESC LIMIT 88000;
+
+CALL sp_venta('20230421', 3, 100);
+SELECT MAX(NUMERO) FROM facturas;
+
+
+
+
