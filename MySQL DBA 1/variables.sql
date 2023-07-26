@@ -22,9 +22,9 @@ USE base;
 
 SHOW VARIABLES WHERE Variable_Name LIKE '%dir';
 
+LOCK INSTANCE FOR BACKUP;
 
-
-
+UNLOCK INSTANCE;
 
 
 
