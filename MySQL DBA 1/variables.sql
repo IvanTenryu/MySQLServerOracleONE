@@ -20,7 +20,7 @@ CREATE DATABASE base;
 
 USE base;
 
-
+SHOW VARIABLES WHERE Variable_Name LIKE '%dir';
 
 
 
