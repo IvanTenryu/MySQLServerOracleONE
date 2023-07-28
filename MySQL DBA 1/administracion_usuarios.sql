@@ -13,6 +13,15 @@ GRANT SELECT, EXECUTE ON *.* TO 'lector01'@'localhost';
 
 -- Usuario para respaldos
 CREATE USER 'back01'@'localhost' IDENTIFIED BY 'back01';
-GRANT SELECT, RELOAD, LOCK TABLES, REPLICATION CLIENT ON *.* TO 'back01'@'localhost';
+
+-- Usuario administrador generico de la base de datos
+CREATE USER 'admingenerico02'@'%' IDENTIFIED BY 'admingenerico02';
+GRANT ALL PRIVILEGES ON *.* TO 'admingenerico02'@'%' WITH GRANT OPTION;
+
+
+
+
+
+
 
 
