@@ -18,7 +18,14 @@ CREATE USER 'back01'@'localhost' IDENTIFIED BY 'back01';
 CREATE USER 'admingenerico02'@'%' IDENTIFIED BY 'admingenerico02';
 GRANT ALL PRIVILEGES ON *.* TO 'admingenerico02'@'%' WITH GRANT OPTION;
 
+-- Usuario con acceso limitado a la tabla
+CREATE USER 'user03'@'%' IDENTIFIED BY 'user03';
+GRANT SELECT, INSERT, UPDATE, DELETE ON jugos_ventas.facturas TO 'user03'@'%';
 
+-- Usuario con acceso limitado a los esquemas
+CREATE USER 'user04'@'%' IDENTIFIED BY 'user04';
+GRANT SELECT, INSERT, UPDATE, DELETE, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE
+ON jugos_ventas.* TO 'user04'@'%';
 
 
 
